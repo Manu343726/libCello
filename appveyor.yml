@@ -7,9 +7,10 @@ environment:
 install:
   - cinst biicode 
   - cmd: cmake --version
-  - cmd: set PATH=%PATH%;C:\Program Files (x86)\BiiCode\bii
+  - cmd: set PATH=%PATH%;C:\Program Files (x86)\BiiCode\bii;
+  - cmd: set PATH=%PATH:Git\bin=%;C:\MinGW\bin    
   - cmd: bii -v
-  - cmd: echo yes | bii setup:cpp
+  - cmd: echo yes| bii setup:cpp
 
 before_build:
   - cmd: bii init myproject
