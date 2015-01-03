@@ -1,15 +1,13 @@
 version: 1.0.{build}
 
-environment:
-  secured_passwd:
-    secure: 0cRRPfYLuFHGktDapSOefg==
-
 install:
   - cinst biicode mingw
+  - cmd: set PATH=%PATH:CMake 2.8\bin=%;C:\ProgramData\chocolatey\lib\cmake.3.0.2\content\cmake-3.0.2-win32-x86\bin
+  - cmd: set PATH=%PATH:Git\bin=%;C:\MinGW\bin
+  - cmd: set PATH=%PATH%;C:\Program Files (x86)\BiiCode\bii;  
   - cmd: cmake --version
   - cmd: g++ --version
-  - cmd: set PATH=%PATH%;C:\Program Files (x86)\BiiCode\bii;    
-  - cmd: bii -v
+  - cmd: bii --version
 
 before_build:
   - cmd: bii init myproject
@@ -28,10 +26,5 @@ build_script:
 
 test_script:
   - cmd: bin\diego_libcello_tests_test.exe
-
-# to run your custom scripts instead of provider deployments
-deploy_script:
-  - cmd: bii user diego -p %secured_passwd%
-  - cmd: bii publish
 
 
